@@ -1,0 +1,22 @@
+cloud:
+    gateway:
+        routes:
+            -   id: feesms
+                uri: lb://FEESMS
+                predicates:
+                        - Path=/**
+            -   id: studentms
+                uri: lb://STUDENTMS
+                predicates:
+                        - Path=/**
+eureka:
+    client:
+        fetch-registry: true
+        register-with-eureka: true
+        service-url:
+            defaultZone: http://localhost:8761/eureka
+server:
+    port: 8760
+spring:
+    application:
+        name: gateway-service
